@@ -1,0 +1,234 @@
+/* Contact Section Styles */
+.contact-section {
+    background: linear-gradient(to bottom, transparent, rgba(139, 92, 246, 0.1));
+    padding: var(--spacing-3xl) 0;
+}
+
+.contact-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 4rem;
+}
+
+.contact-description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .contact-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+}
+
+/* Contact Form */
+.contact-form {
+    background: rgba(26, 26, 36, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(26, 26, 36, 0.5);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all var(--transition-normal);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.form-textarea {
+    resize: none;
+    min-height: 150px;
+}
+
+.form-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.form-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Form Status Messages */
+.form-message {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    border-radius: var(--radius-md);
+    margin-top: 1rem;
+}
+
+.form-message-success {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+}
+
+.form-message-error {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.1);
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Social Links Card */
+.social-links-card {
+    background: rgba(26, 26, 36, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-links-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.social-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social-link-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(26, 26, 36, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+}
+
+.social-link-item:hover {
+    transform: translateX(10px);
+    background: rgba(26, 26, 36, 0.5);
+}
+
+.social-link-icon {
+    color: var(--text-secondary);
+    transition: all var(--transition-normal);
+}
+
+.social-link-item:hover .social-link-icon {
+    transform: scale(1.1);
+}
+
+.social-link-item:nth-child(1):hover .social-link-icon {
+    color: var(--text-secondary);
+}
+
+.social-link-item:nth-child(2):hover .social-link-icon {
+    color: var(--secondary);
+}
+
+.social-link-item:nth-child(3):hover .social-link-icon {
+    color: var(--primary);
+}
+
+.social-link-name {
+    font-weight: 500;
+}
+
+/* Why Work With Me Card */
+.why-work-card {
+    background: rgba(26, 26, 36, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.why-work-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.why-work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.why-work-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.why-work-check {
+    color: var(--primary);
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+/* Footer */
+.contact-footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--bg-tertiary);
+}
+
+.contact-footer p {
+    color: var(--text-secondary);
+}

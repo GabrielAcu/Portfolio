@@ -1,0 +1,114 @@
+/* Hero Section Styles */
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.hero-greeting {
+    margin-bottom: 1.5rem;
+}
+
+.hero-greeting span {
+    font-size: 1.125rem;
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.hero-name {
+    margin-bottom: 1.5rem;
+}
+
+.hero-typing {
+    margin-bottom: 2rem;
+    height: 4rem;
+}
+
+.hero-typing h2 {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    font-family: 'Courier New', monospace;
+}
+
+.hero-description {
+    max-width: 48rem;
+    margin-bottom: 3rem;
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* CTA Buttons */
+.hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+/* Social Links */
+.hero-social {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 4rem;
+}
+
+.hero-social a {
+    color: var(--text-secondary);
+    transition: all var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-social a:hover {
+    transform: scale(1.1);
+}
+
+.hero-social a:nth-child(1):hover {
+    color: var(--primary);
+}
+
+.hero-social a:nth-child(2):hover {
+    color: var(--secondary);
+}
+
+.hero-social a:nth-child(3):hover {
+    color: var(--accent);
+}
+
+/* Scroll Indicator */
+.hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hero-scroll-icon {
+    cursor: pointer;
+    color: var(--primary);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .hero-greeting span {
+        font-size: 1.25rem;
+    }
+
+    .hero-typing {
+        height: 5rem;
+    }
+
+    .hero-typing h2 {
+        font-size: 2.25rem;
+    }
+
+    .hero-description {
+        font-size: 1.25rem;
+    }
+}
