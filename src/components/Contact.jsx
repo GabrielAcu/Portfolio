@@ -36,17 +36,17 @@ const Contact = () => {
         {
             name: 'GitHub',
             icon: <Github size={24} />,
-            url: 'https://github.com/tu-usuario'
+            url: 'https://github.com/gabrielacu'
         },
         {
             name: 'LinkedIn',
             icon: <Linkedin size={24} />,
-            url: 'https://linkedin.com/in/tu-usuario'
+            url: 'https://www.linkedin.com/in/gabriel-acu%C3%B1a-566b14216/'
         },
         {
             name: 'Email',
             icon: <Mail size={24} />,
-            url: 'mailto:tu@email.com'
+            url: 'mailto:cabebedlam.10gb@gmail.com'
         }
     ];
 

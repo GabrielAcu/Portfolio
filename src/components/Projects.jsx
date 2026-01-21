@@ -116,7 +116,7 @@ Desarrollado con React, Supabase y diseño modular por sprints.`,
                         ¿Quieres ver más proyectos?
                     </p>
                     <a
-                        href="https://github.com/tu-usuario"
+                        href="https://github.com/gabrielacu"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="btn btn-outline"
