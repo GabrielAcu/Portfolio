@@ -6,6 +6,24 @@ import './Skills.css';
 const Skills = () => {
     const [ref, isVisible] = useScrollAnimation();
 
+    // URLs de iconos desde DevIcon CDN
+    const techIcons = {
+        'React': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+        'JavaScript': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+        'HTML/CSS': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', // Usamos HTML5 como representativo
+        'Framer Motion': 'https://pagepro.co/blog/wp-content/uploads/2020/03/framer-motion.png', // Fallback para framer
+        'Node.js': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+        'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+        'PHP': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+        'Laravel': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg',
+        'MySQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+        'Supabase': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg',
+        'Git & GitHub': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+        'Vite': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg',
+        'VS Code': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg',
+        'Vercel': 'https://assets.vercel.com/image/upload/v1588805858/repositories/vercel/logo.png'
+    };
+
     const skillCategories = [
         {
             title: 'Frontend',
@@ -24,7 +42,9 @@ const Skills = () => {
             colorClass: 'gradient-blue-cyan',
             skills: [
                 { name: 'Node.js', level: 75 },
+                { name: 'Python', level: 60 },
                 { name: 'PHP', level: 70 },
+                { name: 'Laravel', level: 65 },
                 { name: 'MySQL', level: 75 },
                 { name: 'Supabase', level: 65 }
             ]
@@ -67,6 +87,23 @@ const Skills = () => {
                     <p className="skills-description">
                         Tecnologías y habilidades que he desarrollado a lo largo de mi viaje como desarrollador.
                     </p>
+
+                    {/* All Tech Icons Display */}
+                    <div className="skills-icons-showcase">
+                        {Object.entries(techIcons).map(([name, iconUrl], index) => (
+                            <motion.div
+                                key={name}
+                                className="tech-icon-large-container"
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: index * 0.05 }}
+                                whileHover={{ y: -5, scale: 1.1 }}
+                                title={name}
+                            >
+                                <img src={iconUrl} alt={name} className="tech-icon-large" />
+                            </motion.div>
+                        ))}
+                    </div>
                 </motion.div>
 
                 <div ref={ref} className="skills-grid">
@@ -89,9 +126,18 @@ const Skills = () => {
                             {/* Skills List */}
                             <div className="skill-items">
                                 {category.skills.map((skill, skillIndex) => (
-                                    <div key={skill.name}>
+                                    <div key={skill.name} className="skill-item">
                                         <div className="skill-item-header">
-                                            <span className="skill-name">{skill.name}</span>
+                                            <div className="skill-name-with-icon">
+                                                {techIcons[skill.name] && (
+                                                    <img
+                                                        src={techIcons[skill.name]}
+                                                        alt={skill.name}
+                                                        className="skill-tech-icon-img"
+                                                    />
+                                                )}
+                                                <span className="skill-name">{skill.name}</span>
+                                            </div>
                                             <span className="skill-level">{skill.level}%</span>
                                         </div>
                                         <div className="skill-bar-bg">
