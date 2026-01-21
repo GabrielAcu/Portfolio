@@ -17,10 +17,11 @@
 
 .contact-content {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 3rem;
     max-width: 80rem;
     margin: 0 auto;
+    width: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -37,6 +38,7 @@
     padding: 2rem;
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 100%;
 }
 
 .form-group {

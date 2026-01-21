@@ -147,6 +147,9 @@
     cursor: pointer;
     border-radius: 0.5rem;
     transition: background var(--transition-normal);
+    position: relative;
+    z-index: 1002;
+    /* Ensure it's above everything */
 }
 
 .navbar-toggle:hover {
@@ -162,28 +165,49 @@
 /* Mobile Menu */
 .mobile-menu {
     position: fixed;
-    inset: 0;
-    z-index: calc(var(--z-navbar) - 1);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(70vw, 300px);
+    /* Width restriction */
+    /* Removed inset: 0 to avoid full screen */
+    z-index: 90;
+    /* High z-index but ideally below toggle button if needed, or consistent with navbar */
     padding-top: 5rem;
+    background: rgba(15, 15, 25, 0.95);
+    /* Dark background */
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
 }
 
 .mobile-menu-content {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    align-items: flex-start;
+    /* Align items to the start (left) */
+    gap: 1.5rem;
+    /* Reduced gap */
     padding: 2rem;
 }
 
 .mobile-menu-item {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
+    /* Smaller font size */
     color: var(--text-secondary);
     text-decoration: none;
-    transition: color var(--transition-normal);
+    transition: all var(--transition-normal);
+    width: 100%;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Separator lines */
 }
 
 .mobile-menu-item:hover {
     color: var(--text-primary);
+    padding-left: 0.5rem;
+    /* Slide effect on hover */
+    border-bottom-color: var(--primary);
 }
 
 /* Hide logo text on small screens */

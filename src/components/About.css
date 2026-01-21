@@ -6,9 +6,11 @@
 
 .about-content {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 3rem;
     align-items: start;
+    width: 100%;
+    max-width: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -23,6 +25,8 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
 }
 
 .bio-card {
@@ -31,6 +35,26 @@
     padding: 2rem;
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ... (existing bio-title, bio-text) ... */
+
+/* Timeline Section */
+/* ... (existing styles) ... */
+
+.timeline-content {
+    background: rgba(26, 26, 36, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: border-color var(--transition-normal);
+    width: 100%;
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .bio-title {
@@ -138,6 +162,23 @@
     border-radius: var(--radius-xl);
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: border-color var(--transition-normal);
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (max-width: 640px) {
+    .timeline-item {
+        padding-left: 3rem;
+    }
+
+    .timeline-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .timeline-line {
+        left: 1.25rem;
+    }
 }
 
 .timeline-content:hover {
