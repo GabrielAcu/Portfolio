@@ -23,7 +23,7 @@ Este proyecto me permitió aprender sobre arquitectura de bases de datos relacio
             tags: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML'],
             status: 'wip',
             github: 'https://github.com/GabrielAcu/Lo-de-Clau',
-            demo: null,
+            demo: 'https://lo-de-clau.vercel.app/',
             features: [
                 'Gestión de menú diario actualizable',
                 'Catálogo de productos por categorías',
@@ -34,29 +34,28 @@ Este proyecto me permitió aprender sobre arquitectura de bases de datos relacio
         },
         {
             id: 2,
-            title: 'Burger City',
-            description: 'Aplicación de gestión de pedidos para restaurante con sistema de reportes.',
-            longDescription: `Sistema completo de gestión para restaurante con múltiples funcionalidades:
+            title: 'Distribuidora de Bebidas',
+            description: 'Aplicación web para distribuidora con catálogo de productos y gestión de pedidos vía WhatsApp.',
+            longDescription: `Aplicación web mobile-first desarrollada para una distribuidora de bebidas, diseñada para optimizar el proceso de toma de pedidos y facilitar la gestión de productos.
       
-- Sistema de pedidos en tiempo real
-- Dashboard ejecutivo con métricas
-- Gestión de inventario
-- Reportes y analytics
+El sistema permite a los clientes explorar el catálogo completo de productos, agregar items al carrito y enviar pedidos directamente por WhatsApp. Incluye un panel administrativo completo para gestionar productos, categorías y precios de forma independiente.
 
-Desarrollado con React, Supabase y diseño modular por sprints.`,
+Desarrollado con Next.js, Prisma y autenticación segura, con enfoque en experiencia móvil y deployment en Vercel.`,
             image: null,
-            icon: '🍔',
-            tags: ['React', 'Supabase', 'JavaScript', 'CSS'],
+            icon: '🥤',
+            tags: ['Next.js', 'Prisma', 'JavaScript', 'CSS', 'Vercel'],
             status: 'wip',
-            github: null,
-            demo: null,
+            github: 'https://github.com/GabrielAcu/Distribuidora-Bebidas',
+            demo: 'https://distribuidora-bebidas-two.vercel.app/',
             features: [
-                'Sistema de pedidos en tiempo real',
-                'Dashboard con reportes visuales',
-                'Gestión de productos y categorías',
-                'Sistema de usuarios y permisos'
+                'Catálogo de productos con búsqueda',
+                'Sistema de carrito de compras',
+                'Integración con WhatsApp para pedidos',
+                'Panel administrativo con CRUD completo',
+                'Autenticación segura con JWT',
+                'Diseño mobile-first responsive'
             ],
-            learnings: 'Profundicé en React hooks, manejo de estado global, integración con bases de datos en tiempo real y diseño de dashboards.'
+            learnings: 'Aprendí a implementar autenticación desde cero con JWT, trabajar con Prisma ORM, diseñar aplicaciones mobile-first y optimizar el flujo de pedidos para negocios reales.'
         },
         {
             id: 3,

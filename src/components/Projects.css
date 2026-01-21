@@ -12,6 +12,7 @@
 .projects-description {
     color: var(--text-secondary);
     line-height: 1.8;
+    margin-bottom: 3rem;
 }
 
 /* Projects Grid */
