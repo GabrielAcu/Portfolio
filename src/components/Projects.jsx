@@ -4,6 +4,11 @@ import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 import './Projects.css';
 
+// Import Project Screens
+import LoDeClauPreview from '../assets/projects/lo-de-clau-preview.png';
+import DistribuidoraPreview from '../assets/projects/distribuidora-preview.png';
+import CflPreview from '../assets/projects/cfl-preview.png';
+
 const Projects = () => {
     const [selectedProject, setSelectedProject] = useState(null);
 
@@ -18,7 +23,7 @@ const Projects = () => {
 Incluye gestión de menú diario, catálogo de productos, categorías y administración de contenido. Desarrollado con PHP y MySQL, con un diseño responsive y moderno.
 
 Este proyecto me permitió aprender sobre arquitectura de bases de datos relacionales y gestión de contenido dinámico.`,
-            image: null,
+            image: LoDeClauPreview,
             icon: '🍽️',
             tags: ['PHP', 'MySQL', 'JavaScript', 'CSS', 'HTML'],
             status: 'wip',
@@ -41,7 +46,7 @@ Este proyecto me permitió aprender sobre arquitectura de bases de datos relacio
 El sistema permite a los clientes explorar el catálogo completo de productos, agregar items al carrito y enviar pedidos directamente por WhatsApp. Incluye un panel administrativo completo para gestionar productos, categorías y precios de forma independiente.
 
 Desarrollado con Next.js, Prisma y autenticación segura, con enfoque en experiencia móvil y deployment en Vercel.`,
-            image: null,
+            image: DistribuidoraPreview,
             icon: '🥤',
             tags: ['Next.js', 'Prisma', 'JavaScript', 'CSS', 'Vercel'],
             status: 'wip',
@@ -59,21 +64,24 @@ Desarrollado con Next.js, Prisma y autenticación segura, con enfoque en experie
         },
         {
             id: 3,
-            title: 'Tu Proyecto 3',
-            description: 'Descripción breve de tu tercer proyecto más importante.',
-            longDescription: 'Descripción detallada de tu proyecto, qué problema resuelve, cómo lo desarrollaste y qué aprendiste en el proceso.',
-            image: null,
-            icon: '💼',
-            tags: ['React', 'Node.js', 'MongoDB'],
+            title: 'Sistema de Gestión CFL 402',
+            description: 'Plataforma integral para la administración de alumnos, cursos e instructores del Centro de Formación Laboral.',
+            longDescription: `Sistema completo de gestión educativa desarrollado para el CFL 402. Permite la administración centralizada de alumnos, instructores, cursos y certificados.
+
+Cuenta con roles de usuario (admin, instructor), generación de actas y reportes, y seguimiento del historial académico de los alumnos. Implementado con una arquitectura robusta para garantizar la integridad de los datos.`,
+            image: CflPreview,
+            icon: '🎓',
+            tags: ['React', 'Node.js', 'MySQL', 'Railway'],
             status: 'completed',
-            github: 'https://github.com/tu-usuario/proyecto',
-            demo: 'https://tu-proyecto.com',
+            github: 'https://github.com/GabrielAcu/CFL402', // Asumiendo, o dejar vacío si es privado
+            demo: 'https://cfl402-production.up.railway.app/',
             features: [
-                'Característica 1',
-                'Característica 2',
-                'Característica 3'
+                'Gestión de legajos de alumnos e instructores',
+                'Administración de cursos y materias',
+                'Generación automática de actas y certificados',
+                'Sistema de roles y permisos'
             ],
-            learnings: 'Qué aprendiste desarrollando este proyecto.'
+            learnings: 'Desarrollo de sistemas de gestión complejos, manejo de relaciones SQL avanzadas y despliegue en producción con Railway.'
         }
     ];
 
