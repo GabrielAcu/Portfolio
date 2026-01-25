@@ -1,7 +1,21 @@
+import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Github, ExternalLink, Calendar, Code } from 'lucide-react';
+import { X, Github, ExternalLink, Calendar, Code, CheckCircle2 } from 'lucide-react';
+import './ProjectModal.css';
 
 const ProjectModal = ({ project, isOpen, onClose }) => {
+    // Lock body scroll
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
+
     if (!project) return null;
 
     return (
@@ -14,143 +28,175 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+                        className="modal-overlay"
                     />
 
-                    {/* Modal */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 50 }}
-                        transition={{ type: 'spring', damping: 25 }}
-                        className="fixed inset-4 md:inset-10 lg:inset-20 z-50 overflow-hidden"
-                    >
-                        <div className="glass-strong h-full rounded-2xl overflow-y-auto">
-                            <div className="sticky top-0 glass-strong z-10 p-6 flex justify-between items-center border-b border-gray-700/50">
-                                <h2 className="text-2xl md:text-3xl font-bold gradient-text">
-                                    {project.title}
-                                </h2>
+                    {/* Modal Container */}
+                    <div className="modal-container">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                            className="modal-content"
+                        >
+                            {/* Header */}
+                            <div className="modal-header">
                                 <button
                                     onClick={onClose}
-                                    className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-                                    aria-label="Cerrar modal"
+                                    className="modal-close-btn"
+                                    aria-label="Cerrar"
                                 >
                                     <X size={24} />
                                 </button>
+
+                                <div className="modal-title-wrapper">
+                                    <h2 className="modal-title gradient-text">
+                                        {project.title}
+                                    </h2>
+                                    <div className="modal-meta">
+                                        <span className="modal-meta-item">
+                                            <Calendar size={14} style={{ color: '#a78bfa' }} />
+                                            {project.status === 'wip' ? 'En Desarrollo' : 'Completado'}
+                                        </span>
+                                        <span>•</span>
+                                        <span className="modal-meta-item">
+                                            <Code size={14} style={{ color: '#60a5fa' }} />
+                                            {project.tags.length} Tecnologías
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div className="p-6 md:p-8">
-                                {/* Project Image */}
-                                {project.image && (
-                                    <div className="mb-8 rounded-xl overflow-hidden">
-                                        <img
-                                            src={project.image}
-                                            alt={project.title}
-                                            className="w-full h-64 md:h-96 object-cover"
-                                        />
-                                    </div>
-                                )}
-
-                                {/* Project Info Grid */}
-                                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                                    <div className="glass p-4 rounded-lg">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <Calendar size={20} className="text-purple-400" />
-                                            <span className="font-semibold">Estado</span>
+                            {/* Scrollable Content */}
+                            <div className="modal-body">
+                                {/* Image & Info Grid */}
+                                <div className="modal-grid">
+                                    {/* Left: Image */}
+                                    <div>
+                                        <div className="modal-image-wrapper">
+                                            <div className="modal-image-container">
+                                                {project.image && (
+                                                    <img
+                                                        src={project.image}
+                                                        alt={project.title}
+                                                        className="modal-image"
+                                                    />
+                                                )}
+                                            </div>
                                         </div>
-                                        <p className="text-gray-400">
-                                            {project.status === 'wip' ? 'En Progreso' : 'Completado'}
-                                        </p>
-                                    </div>
 
-                                    <div className="glass p-4 rounded-lg">
-                                        <div className="flex items-center gap-2 mb-2">
-                                            <Code size={20} className="text-blue-400" />
-                                            <span className="font-semibold">Tecnologías</span>
+                                        {/* Action Buttons (Desktop) */}
+                                        <div className="modal-buttons desktop">
+                                            {project.demo && (
+                                                <a
+                                                    href={project.demo}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="btn btn-primary"
+                                                    style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', padding: '0.75rem' }}
+                                                >
+                                                    <ExternalLink size={20} />
+                                                    Ver Demo Live
+                                                </a>
+                                            )}
+                                            {project.github && (
+                                                <a
+                                                    href={project.github}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="btn btn-outline"
+                                                    style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', padding: '0.75rem' }}
+                                                >
+                                                    <Github size={20} />
+                                                    Código
+                                                </a>
+                                            )}
                                         </div>
-                                        <p className="text-gray-400">{project.tags.length} tecnologías</p>
+                                    </div>
+
+                                    {/* Right: Info */}
+                                    <div>
+                                        {/* Description */}
+                                        <div className="modal-section">
+                                            <h3 className="modal-section-title">Sobre el proyecto</h3>
+                                            <p className="modal-description">
+                                                {project.longDescription || project.description}
+                                            </p>
+                                        </div>
+
+                                        {/* Technologies */}
+                                        <div className="modal-section">
+                                            <h3 className="modal-section-subtitle">Stack Tecnológico</h3>
+                                            <div className="modal-tags">
+                                                {project.tags.map((tag, index) => (
+                                                    <span key={index} className="modal-tag">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                {/* Description */}
-                                <div className="mb-8">
-                                    <h3 className="text-xl font-bold mb-4">Descripción</h3>
-                                    <p className="text-gray-300 leading-relaxed whitespace-pre-line">
-                                        {project.longDescription || project.description}
-                                    </p>
-                                </div>
-
-                                {/* Technologies */}
-                                <div className="mb-8">
-                                    <h3 className="text-xl font-bold mb-4">Stack Tecnológico</h3>
-                                    <div className="flex flex-wrap gap-3">
-                                        {project.tags.map((tag, index) => (
-                                            <motion.span
-                                                key={index}
-                                                initial={{ opacity: 0, scale: 0.8 }}
-                                                animate={{ opacity: 1, scale: 1 }}
-                                                transition={{ delay: index * 0.05 }}
-                                                className="px-4 py-2 glass rounded-lg text-purple-300 border border-purple-500/30 hover:border-purple-500/60 transition-colors"
-                                            >
-                                                {tag}
-                                            </motion.span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Key Features */}
-                                {project.features && (
-                                    <div className="mb-8">
-                                        <h3 className="text-xl font-bold mb-4">Características Principales</h3>
-                                        <ul className="space-y-2">
-                                            {project.features.map((feature, index) => (
-                                                <li key={index} className="flex items-start gap-2 text-gray-300">
-                                                    <span className="text-purple-400 mt-1">▹</span>
-                                                    {feature}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-
-                                {/* Learnings */}
-                                {project.learnings && (
-                                    <div className="mb-8">
-                                        <h3 className="text-xl font-bold mb-4">Aprendizajes</h3>
-                                        <p className="text-gray-300 leading-relaxed">
-                                            {project.learnings}
-                                        </p>
-                                    </div>
-                                )}
-
-                                {/* Action Buttons */}
-                                <div className="flex flex-wrap gap-4">
-                                    {project.github && (
-                                        <a
-                                            href={project.github}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="btn btn-primary flex items-center gap-2"
-                                        >
-                                            <Github size={20} />
-                                            Ver Código
-                                        </a>
+                                {/* Features & Learnings */}
+                                <div className="modal-grid modal-divider">
+                                    {project.features && (
+                                        <div className="modal-section">
+                                            <h3 className="modal-section-title">Características</h3>
+                                            <ul className="modal-features">
+                                                {project.features.map((feature, index) => (
+                                                    <li key={index} className="modal-feature-item">
+                                                        <CheckCircle2 size={18} className="modal-feature-icon" />
+                                                        <span>{feature}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
                                     )}
+
+                                    {project.learnings && (
+                                        <div className="modal-learnings">
+                                            <h3 className="modal-learnings-title">
+                                                Aprendizajes Clave
+                                            </h3>
+                                            <p className="modal-learnings-text">
+                                                "{project.learnings}"
+                                            </p>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Action Buttons (Mobile) */}
+                                <div className="modal-buttons mobile">
                                     {project.demo && (
                                         <a
                                             href={project.demo}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="btn btn-outline flex items-center gap-2"
+                                            className="btn btn-primary"
+                                            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', padding: '0.75rem' }}
                                         >
                                             <ExternalLink size={20} />
-                                            Ver Demo
+                                            Ver Demo Live
+                                        </a>
+                                    )}
+                                    {project.github && (
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="btn btn-outline"
+                                            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', padding: '0.75rem' }}
+                                        >
+                                            <Github size={20} />
+                                            Ver Código
                                         </a>
                                     )}
                                 </div>
                             </div>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    </div>
                 </>
             )}
         </AnimatePresence>
